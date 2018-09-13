@@ -8,7 +8,9 @@
 
 <script>
 export default {
-  name: 'progress-circle'
+  name: 'progress-circle',
+  methods: {
+  }
 };
 </script>
 

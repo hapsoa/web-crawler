@@ -1,63 +1,34 @@
 <template lang="pug">
-  progress-circle
+  .root
+    progress-circle(v-if="isShowed")
+    toast
+    <!--button(type="button") show progress-->
+    <!--button(type="button") toast-->
+    bootstrap-custom-button(v-on:click.native="showProgress", :buttonName="'show progress'")
+    bootstrap-custom-button(:buttonName="'toast'")
 </template>
 
 <script>
-
-import { store } from '../vuex/store';
-
 export default {
   name: 'HelloWorld',
-  store,
   data() {
     return {
-      msg: 'Welcome to Hanu Vue Template',
-      posX: 0,
-      posY: 0
+      isShowed: true
     };
   },
-  computed: {
-    count() {
-      return this.$store.state.count;
-    },
-    getPosition() {
-      return {
-        left: `${this.posX}px`,
-        top: `${this.posY}px`
-      };
-    }
-  },
   methods: {
-    increment() {
-      this.$store.commit('increment', { inc: 1 });
-    },
-    decrement() {
-      this.$store.commit('increment', { inc: -1 });
-    },
-    async mousemoved() {
-      console.log(this);
+    showProgress() {
+      console.log('aaa');
+      // 버튼이 프로그레스를 켜고 끌 수 있다.
+      // 프로그레스를 켜고 끄려면 display: none 을 설정해줘야 할 것이다.
+      // v-if 를 true false 를 지정해주면 가능해보인다.
+      this.isShowed = !this.isShowed;
     }
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
+<style scoped lang="sass">
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
 </style>

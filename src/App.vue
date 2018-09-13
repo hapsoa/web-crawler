@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <!--<img src="./assets/logo.png">-->
     <router-view/>
   </div>
 </template>
@@ -8,9 +7,15 @@
 <script>
 import Vue from 'vue';
 import progressCircle from './components/progress-circle';
+import toast from './components/toast';
+// import button from './components/bootstrapButton';
+import bootstrapCustomButton from './components/bootstrapCustomButton';
 import { store } from './vuex/store';
 
 Vue.component(progressCircle.name, progressCircle);
+Vue.component(toast.name, toast);
+// Vue.component(button.name, button);
+Vue.component(bootstrapCustomButton.name, bootstrapCustomButton);
 
 export default {
   name: 'App',
