@@ -8,17 +8,13 @@
 
 <script>
 export default {
-  name: 'progress'
+  name: 'progress-circle'
 };
 </script>
 
 <style scoped>
   html {
     height: 100%;
-  }
-
-  body {
-    background-image: radial-gradient(circle farthest-corner at center, #3C4B57 0%, #1C262B 100%);
   }
 
   .loader {
@@ -43,21 +39,21 @@ export default {
     left: 0%;
     top: 0%;
     animation: rotate-one 1s linear infinite;
-    border-bottom: 3px solid #EFEFFA;
+    border-bottom: 3px solid #333;
   }
 
   .inner.two {
     right: 0%;
     top: 0%;
     animation: rotate-two 1s linear infinite;
-    border-right: 3px solid #EFEFFA;
+    border-right: 3px solid #333;
   }
 
   .inner.three {
     right: 0%;
     bottom: 0%;
     animation: rotate-three 1s linear infinite;
-    border-top: 3px solid #EFEFFA;
+    border-top: 3px solid #333;
   }
 
   @keyframes rotate-one {

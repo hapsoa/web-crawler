@@ -1,13 +1,16 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <!--<img src="./assets/logo.png">-->
     <router-view/>
   </div>
 </template>
 
 <script>
+import Vue from 'vue';
+import progressCircle from './components/progress-circle';
 import { store } from './vuex/store';
 
+Vue.component(progressCircle.name, progressCircle);
 
 export default {
   name: 'App',
