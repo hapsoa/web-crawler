@@ -8,13 +8,15 @@
 import Vue from 'vue';
 import progressCircle from './components/progress-circle';
 import toast from './components/toast';
-// import button from './components/bootstrapButton';
+import toast2 from './components/toast2';
+import button from './components/bootstrapButton';
 import bootstrapCustomButton from './components/bootstrapCustomButton';
 import { store } from './vuex/store';
 
 Vue.component(progressCircle.name, progressCircle);
 Vue.component(toast.name, toast);
-// Vue.component(button.name, button);
+Vue.component(toast2.name, toast2);
+Vue.component(button.name, button);
 Vue.component(bootstrapCustomButton.name, bootstrapCustomButton);
 
 export default {

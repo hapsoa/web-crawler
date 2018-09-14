@@ -1,20 +1,24 @@
 <template>
-  <div class="root">
-    <button type="button" class="btn btn-primary">Primary</button>
-    <button type="button" class="btn btn-secondary">Secondary</button>
-    <button type="button" class="btn btn-success">Success</button>
-    <button type="button" class="btn btn-danger">Danger</button>
-    <button type="button" class="btn btn-warning">Warning</button>
-    <button type="button" class="btn btn-info">Info</button>
-    <button type="button" class="btn btn-light">Light</button>
-    <button type="button" class="btn btn-dark">Dark</button>
+  <div class="row">
+    <template v-for="variant in ['primary','secondary','success',
+    'outline-success','warning','danger','link']">
+      <div class="col-md-4 pb-2" v-for="size in ['sm','','lg']" :key="`${variant}_${size}`">
+        <b-button :size="size" :variant="variant">
+          {{variant}} {{size}}
+        </b-button>
+      </div>
+    </template>
   </div>
 </template>
 
 <script>
-// import $ from 'jquery';
-// import proper from 'proper';
-// import bootstrap from 'bootstrap';
+import Vue from 'vue';
+import BootstrapVue from 'bootstrap-vue';
+
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+
+Vue.use(BootstrapVue);
 
 export default {
   name: 'bootstrapButton'

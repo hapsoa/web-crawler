@@ -1,5 +1,5 @@
 <template>
-  <div class="loader">
+  <div class="loader" v-if="isShowed">
     <div class="inner one"></div>
     <div class="inner two"></div>
     <div class="inner three"></div>
@@ -9,7 +9,21 @@
 <script>
 export default {
   name: 'progress-circle',
+  data() {
+    return {
+      isShowed: true
+    };
+  },
   methods: {
+    showProgress() {
+      // 버튼이 프로그레스를 켜고 끌 수 있다.
+      // 프로그레스를 켜고 끄려면 display: none 을 설정해줘야 할 것이다.
+      // v-if 를 true false 를 지정해주면 가능해보인다.
+      this.isShowed = true;
+    },
+    closeProgress() {
+      this.isShowed = false;
+    }
   }
 };
 </script>
