@@ -2,7 +2,7 @@
     .root
       .links
         router-link(to="/test") Go to component
-      input(type="text" placeholder="url 입력")
+      input(v-model="findingUrl" placeholder="url 입력")
       .button(@click="getSiteContents") Get Site Contents!
       .viewer(v-html="siteContent")
 </template>
@@ -13,12 +13,14 @@ export default {
   name: 'WebCrawler',
   data() {
     return {
+      findingUrl: '',
       siteContent: ''
     };
   },
   methods: {
-    getSiteContents() {
-      this.$http.get();
+    async getSiteContents() {
+      const result = await this.$http.get(`http://127.0.0.1:3000/site-content/${encodeURIComponent(this.findingUrl)}`);
+      this.siteContent = result.data;
     }
   }
 };
