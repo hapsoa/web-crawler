@@ -1,6 +1,6 @@
 <template lang="pug">
     .root
-      input(type="text" placeholder="url 입")
+      input(type="text" placeholder="url 입력")
       .button(@click="getSiteContents") Get Site Contents!
       .viewer(v-html="siteContent")
 </template>
