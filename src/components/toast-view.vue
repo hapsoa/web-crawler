@@ -8,22 +8,22 @@
 import _ from 'lodash';
 
 export default {
-  name: 'toast2',
+  name: 'toast-view',
   data() {
     return {
       toasts: []
     };
   },
   methods: {
-    generateToast(toastContent, color) {
+    generateToast(options) {
       const toast = {
-        content: toastContent
+        content: options.toastContent
       };
 
-      if (_.isNil(color)) {
+      if (_.isNil(options.color)) {
         toast.color = 'black';
       } else {
-        toast.color = color;
+        toast.color = options.color;
       }
 
       this.toasts.push(toast);

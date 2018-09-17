@@ -37,6 +37,12 @@ export default {
     },
     /**
      * @param {Object} options
+     * @param {String} options.title
+     * @param {String} options.text
+     * @param {String} options.positive
+     * @param {String} options.negative
+     * @param {Function} options.onPositive
+     * @param {Function} options.onNegative
      */
     open(options) {
       if (_.isNil(options)) {

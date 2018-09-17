@@ -1,32 +1,47 @@
 <template lang="pug">
-  section.loaders
+  section.loaders(v-if="active")
     span.loader.loader-quart
-    |  Loading...
-  section.loaders.loaders-bg-2
-    span.loader.loader-double
-    |  Loading...
-  section.loaders.loaders-bg-3
-    span.loader.loader-circles
-    |  Loading...
-  section.loaders.loaders-bg-4
-    span.loader.loader-bars
-      span
-    |  Loading...
+    |  {{ loadingMessage }}
+
 </template>
 
 <script>
+import * as _ from 'lodash';
+
 export default {
-  name: 'loading-progress'
+  name: 'loading-progress',
+  props: {
+    loadingMessage: {
+      type: String,
+      default: 'Loading...'
+    }
+  },
+  data() {
+    return {
+      active: false
+    };
+  },
+  methods: {
+    open(options) {
+      if (_.isNil(options)) { return; }
+
+      this.active = true;
+      this.loadingMessage = options.loadingMessage;
+    },
+    close() {
+      this.active = false;
+    }
+  }
 };
 </script>
 
 <style scoped lang="scss">
   // $Var
-  $bg-color-1: #4eba6f;
+  $bg-color-1: #fff;
   $bg-color-2: #2d95bf;
   $bg-color-3: #f15a5a;
   $bg-color-4: #955ba5;
-  $color: #fff;
+  $color: #4eba6f;
 
   // $Mixin
   @mixin size($width , $height: $width ) {
@@ -93,7 +108,7 @@ export default {
   /*$Loader Quadrant*/
   .loader-quart {
     border-radius: 50px;
-    border: 6px solid rgba(255, 255, 255, 0.4);
+    border: 6px solid rgba(0, 255, 0, 0.4);
     &:after {
       content: "";
       @include absPosition(-6px, -6px, -6px, -6px);

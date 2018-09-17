@@ -2,25 +2,27 @@
   <div id="app">
     ui-dialog(ref="defaultDialog2")
     loading-progress(ref="loading")
+    toast-view(ref="toast")
     <router-view/>
   </div>
 </template>
 
 <script>
 import Vue from 'vue';
-import progressCircle from './components/progress-circle';
-import toast from './components/toast';
-import toast2 from './components/toast2';
-import button from './components/bootstrapButton';
+import axios from 'axios';
+
+import toastView from './components/toast-view';
+import bootstrapButton from './components/bootstrap-button';
 import bootstrapCustomButton from './components/bootstrapCustomButton';
 import dialog from './components/ui-dialog';
 import loadingProgress from './components/loading-progress';
+
 import { store } from './vuex/store';
 
-Vue.component(progressCircle.name, progressCircle);
-Vue.component(toast.name, toast);
-Vue.component(toast2.name, toast2);
-Vue.component(button.name, button);
+Vue.prototype.$http = axios;
+
+Vue.component(toastView.name, toastView);
+Vue.component(bootstrapButton.name, bootstrapButton);
 Vue.component(bootstrapCustomButton.name, bootstrapCustomButton);
 Vue.component(dialog.name, dialog);
 Vue.component(loadingProgress.name, loadingProgress);
@@ -32,6 +34,7 @@ export default {
   mounted() {
     Vue.prototype.$dialog = this.$refs.defaultDialog2;
     Vue.prototype.$loading = this.$refs.loading;
+    Vue.prototype.$toast = this.$refs.toast;
   }
 };
 </script>
