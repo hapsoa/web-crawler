@@ -17,10 +17,10 @@ export default {
         positive: '삭제',
         negative: '취소',
         onPositive: () => {
-          console.log('postive');
+          // console.log('postive');
         },
         onNegative: () => {
-          console.log('negative');
+          // console.log('negative');
         }
       });
     }, 2000);

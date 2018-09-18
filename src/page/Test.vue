@@ -49,10 +49,8 @@ export default {
         positive: this.dialogConfirm,
         negative: this.dialogCancel,
         onPositive: () => {
-          console.log('postive');
         },
         onNegative: () => {
-          console.log('negative');
         }
       });
     }
