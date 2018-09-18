@@ -17,6 +17,8 @@ const cheerioModule = new function () {
     const $ = cheerio.load(rootHtml);
 
     if (findingClass === '') {
+      console.log(rootHtml);
+      console.log($('div').toArray());
       return _.map($('div').toArray(), element => $(element).text());
     }
     console.log($(`.${findingClass}`).toArray());

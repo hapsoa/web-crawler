@@ -4,7 +4,10 @@
         <!--router-link(to="/test") Go to component-->
       .search-zone
         input(v-model="findingUrl" placeholder="url 입력")
-        input(type="text" v-model="findingClass" placeholder="클래스 이름")
+        select(v-model="classOrTag" v-on:change="yesSelect")
+          option(value="class") class
+          option(value="tag") tag
+        input(type="text" v-model="findingClass" placeholder="선택자 이름")
         bootstrap-button(:buttonName="'Get Site Contents!'" @click.native="getSiteContents")
       .viewer
         .text-view(v-for="content in siteContentArray") {{ content }}
@@ -13,6 +16,8 @@
 </template>
 
 <script>
+/* eslint-disable linebreak-style */
+
 import cheerioModule from '../components/cheerio-module';
 
 export default {
@@ -20,7 +25,9 @@ export default {
   data() {
     return {
       findingUrl: '',
+      classOrTag: '',
       findingClass: '',
+      findingTag: '',
       siteContentArray: [],
       linkArray: []
     };
@@ -38,8 +45,9 @@ export default {
       this.siteContentArray = cheerioModule.findText();
       // this.linkArray =
       this.linkArray = cheerioModule.findATags();
-
-      // console.log()
+    },
+    yesSelect() {
+      console.log(this.classOrTag);
     }
   }
 };
@@ -51,6 +59,8 @@ export default {
     margin: 10px 0
     input
       margin: 0 10px
+    >select
+      margin-left: 20px
   >.viewer
     width: 100%
     min-height: 200px
