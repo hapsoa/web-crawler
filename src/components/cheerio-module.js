@@ -3,26 +3,36 @@ const _ = require('lodash');
 
 const cheerioModule = new function () {
   let rootHtml;
-  let findingClass;
+  let classOrTag;
+  let findingSelector;
 
   this.setRoot = (options) => {
     rootHtml = options.rootHtml;
-    findingClass = options.findingClass;
+    classOrTag = options.classOrTag;
+    findingSelector = options.findingSelector;
   };
 
   this.findText = () => {
     if (_.isNil(rootHtml)) {
       console.error('not have rootHtml!');
+      return null;
     }
     const $ = cheerio.load(rootHtml);
 
-    if (findingClass === '') {
+    if (findingSelector === '' || classOrTag === '') {
       console.log(rootHtml);
-      console.log($('div').toArray());
+      console.log($('body').toArray());
       return _.map($('div').toArray(), element => $(element).text());
     }
-    console.log($(`.${findingClass}`).toArray());
-    return _.map($(`.${findingClass}`).toArray(), element => $(element).text());
+    if (classOrTag === 'class') {
+      console.log($(`.${findingSelector}`).toArray());
+      return _.map($(`.${findingSelector}`).toArray(), element => $(element).text());
+    } else if (classOrTag === 'tag') {
+      return _.map($(`${findingSelector}`).toArray(), element => $(element).text());
+    }
+    return null;
+
+
     // return $('div').text();
   };
 

@@ -7,7 +7,7 @@
         select(v-model="classOrTag" v-on:change="yesSelect")
           option(value="class") class
           option(value="tag") tag
-        input(type="text" v-model="findingClass" placeholder="선택자 이름")
+        input(type="text" v-model="findingSelector" placeholder="선택자 이름")
         bootstrap-button(:buttonName="'Get Site Contents!'" @click.native="getSiteContents")
       .viewer
         .text-view(v-for="content in siteContentArray") {{ content }}
@@ -26,8 +26,7 @@ export default {
     return {
       findingUrl: '',
       classOrTag: '',
-      findingClass: '',
-      findingTag: '',
+      findingSelector: '',
       siteContentArray: [],
       linkArray: []
     };
@@ -39,7 +38,8 @@ export default {
       // this.siteContent = result.data;
       cheerioModule.setRoot({
         rootHtml: result.data,
-        findingClass: this.findingClass
+        classOrTag: this.classOrTag,
+        findingSelector: this.findingSelector
       });
 
       this.siteContentArray = cheerioModule.findText();
